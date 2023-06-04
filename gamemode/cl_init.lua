@@ -9,6 +9,18 @@ function ShowDialog()
   Frame:SetDraggable( false ) 
   Frame:ShowCloseButton( true ) 
   Frame:MakePopup()
+
+  local Note = nil
+
+  local NameEntry = vgui.Create( "DTextEntry", Frame )
+  NameEntry:SetPos( 25, 50 )
+  NameEntry:SetSize( 264, 32 )
+  NameEntry:SetPlaceholderText( "Add note" )
+  NameEntry.OnEnter = function( self )
+    Note = self:GetValue()
+    print( "The note is: "..Note )
+    self:SetText("")
+  end
 end
 
 hook.Add( "Initialize", "display_dialog", function()
