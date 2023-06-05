@@ -22,6 +22,9 @@ function ShowDialog()
     Notes[NumberOfNotes] = self:GetValue()
     print( "The note is: "..Notes[NumberOfNotes])
     print( "We currently have: "..NumberOfNotes)
+    net.Start( "Retro_SaveNote" )
+      net.WriteString( self:GetValue() )
+    net.SendToServer( )
     self:SetText("")
   end
 end
