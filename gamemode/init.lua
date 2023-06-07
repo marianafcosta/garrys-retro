@@ -8,7 +8,11 @@ util.AddNetworkString("Retro_SaveNote")
 NOTES = {}
 
 net.Receive("Retro_SaveNote", function( len, ply )
-  local note = net.ReadString()
+  local data = net.ReadString()
+  local note = {
+    content = data,
+    player = ply
+  }
   table.insert(NOTES, note)
-  print( "Got the note!: "..note )
+  print( "Got the note!: '"..note.content.."' by "..note.player:Nick() )
 end)
