@@ -15,4 +15,7 @@ net.Receive("Retro_SaveNote", function( len, ply )
   }
   table.insert(NOTES, note)
   print( "Got the note!: '"..note.content.."' by "..note.player:Nick() )
+  local entity = ents.Create("note") -- Classname of the entity; name of the file
+  entity:Spawn()
+  entity:SetPos(ply:GetPos())
 end)
