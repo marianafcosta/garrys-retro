@@ -10,18 +10,11 @@ function ShowDialog()
   Frame:ShowCloseButton( true ) 
   Frame:MakePopup()
 
-  local Notes = {}
-  local NumberOfNotes = 0
-
   local NameEntry = vgui.Create( "DTextEntry", Frame )
   NameEntry:SetPos( 25, 50 )
   NameEntry:SetSize( 264, 32 )
   NameEntry:SetPlaceholderText( "Add note" )
   NameEntry.OnEnter = function( self )
-    NumberOfNotes = NumberOfNotes + 1
-    Notes[NumberOfNotes] = self:GetValue()
-    print( "The note is: "..Notes[NumberOfNotes])
-    print( "We currently have: "..NumberOfNotes)
     net.Start( "Retro_SaveNote" )
       net.WriteString( self:GetValue() )
     net.SendToServer( )
