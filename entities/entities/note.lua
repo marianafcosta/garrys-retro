@@ -3,6 +3,7 @@ AddCSLuaFile()
 ENT.Base = "base_nextbot"
 ENT.Type = "nextbot"
 ENT.Spawnable		= true
+ENT.Note = {}
 
 function ENT:Initialize()
 
@@ -22,10 +23,17 @@ function ENT:Initialize()
 
 		-- Call ENTITY:Use hook only once at every use
 		self:SetUseType( SIMPLE_USE )
+
+		print("Initialized note entity with note: "..self.Note.content.." written by "..self.Note.player:Nick())
 	end
 
 end
 
 function ENT:Use( activator )
-	print("The player read the note")
+	print("Sending note to client...")
+	net.Start("Retro_DisplayNote")
+		net.WriteString(self.Note.content)
+		net.WriteString(self.Note.player:Nick())
+	net.Send(activator)
+	print("Note sent!")
 end

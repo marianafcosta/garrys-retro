@@ -4,6 +4,7 @@ AddCSLuaFile( "shared.lua" )
 include( "shared.lua" )
 
 util.AddNetworkString("Retro_SaveNote")
+util.AddNetworkString("Retro_DisplayNote")
 
 NOTES = {}
 
@@ -16,6 +17,7 @@ net.Receive("Retro_SaveNote", function( len, ply )
   table.insert(NOTES, note)
   print( "Got the note!: '"..note.content.."' by "..note.player:Nick() )
   local entity = ents.Create("note") -- Classname of the entity; name of the file
+  entity.Note = note
   entity:Spawn()
   entity:SetPos(ply:GetPos() + Vector(50, 50, 0))
 end)

@@ -1,5 +1,21 @@
 include( "shared.lua" )
 
+function ShowNote(note, author)
+  local Panel = vgui.Create( "DFrame" )
+	Panel:SetPos( 5, 5 ) 
+	Panel:SetSize( 300, 150 ) 
+	Panel:SetTitle( author.." wrote:" ) 
+	Panel:SetVisible( true ) 
+	Panel:SetDraggable( true ) 
+	Panel:ShowCloseButton( true ) 
+	Panel:MakePopup()
+	
+	local NoteContent = vgui.Create( "DLabel", Panel )
+	NoteContent:SetPos( 25, 50 )
+	NoteContent:SetSize( 264, 32 )
+	NoteContent:SetText(note)
+end
+
 function ShowDialog()
   local Frame = vgui.Create( "DFrame" )
   Frame:SetPos( 5, 5 ) 
@@ -24,4 +40,8 @@ end
 
 hook.Add( "Initialize", "display_dialog", function()
 	ShowDialog()
+end)
+
+net.Receive("Retro_DisplayNote", function()
+  ShowNote(net.ReadString(), net.ReadString())
 end)
