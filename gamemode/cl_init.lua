@@ -42,11 +42,6 @@ hook.Add( "Initialize", "display_dialog", function()
 	ShowDialog()
 end)
 
-hook.Add("Think", "display_read_prompt", function()
-  local eyetrace = LocalPlayer():GetEyeTrace()
-  chat:AddText(eyetrace.Entity)
-end)
-
 net.Receive("Retro_DisplayNote", function()
   ShowNote(net.ReadString(), net.ReadString())
 end)

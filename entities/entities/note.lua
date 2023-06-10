@@ -34,3 +34,15 @@ function ENT:Use( activator )
 	net.Send(activator)
 	print("Note sent!")
 end
+
+if CLIENT then
+
+hook.Add("HUDPaint", "display_read_instruction", function()
+	local eyetrace = LocalPlayer():GetEyeTrace()
+
+  if eyetrace.Entity:GetClass() == "note" then
+    draw.SimpleText( "Read note", "DermaLarge", ScrW()/2, ScrH()/2, color_white, 1)
+  end
+end)
+
+end
