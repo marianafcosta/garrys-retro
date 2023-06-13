@@ -1,8 +1,0 @@
-"sandbox"
-{
-	"base"		"base"
-	"title"		"Retro"
-	"category"	"other"
-	"maps"		"^gm_|^gmod_|^phys_"
-	"menusystem"	"1"
-}
