@@ -5,6 +5,8 @@ AddCSLuaFile("shared.lua")
 
 include("shared.lua")
 
+util.AddNetworkString("Retro_ShowReadNoteDialog")
+
 function ENT:Initialize()
 
   self:SetModel("models/props_lab/bindergreen.mdl")
@@ -23,5 +25,7 @@ function ENT:Initialize()
 end
 
 function ENT:Use(activator)
-  print(self:GetContent())
+  net.Start("Retro_ShowReadNoteDialog")
+    net.WriteString(self:GetContent())
+  net.Send(activator)
 end
