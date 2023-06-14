@@ -9,7 +9,9 @@ util.AddNetworkString("Retro_ShowReadNoteDialog")
 
 function ENT:Initialize()
 
-  self:SetModel("models/props_lab/bindergreen.mdl")
+  if (self:GetModel() == nil) then
+    self:SetModel("models/props_lab/bindergreen.mdl")
+  end
   self:PhysicsInit( SOLID_VPHYSICS )
 	self:SetMoveType(MOVETYPE_VPHYSICS)
 	self:SetSolid(SOLID_VPHYSICS)	
@@ -29,4 +31,15 @@ function ENT:Use(activator)
     net.WriteString(self:GetContent())
     net.WriteString(self:GetNoteType())
   net.Send(activator)
+end
+
+function ENT:UpdateModel()
+  local noteType = self:GetNoteType()
+  if (noteType == "What went well") then
+    self:SetModel("models/props_lab/bindergreen.mdl")
+  elseif (noteType == "What went wrong") then
+    self:SetModel("models/props_lab/binderredlabel.mdl")
+  else
+    self:SetModel("models/props_lab/binderblue.mdl")
+  end
 end
