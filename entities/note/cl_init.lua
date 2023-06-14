@@ -1,10 +1,10 @@
 include("shared.lua")
 
-function ShowReadNoteDialog(note)
+function ShowReadNoteDialog(note, noteType)
   local Panel = vgui.Create( "DFrame" )
 	Panel:SetPos( 5, 5 ) 
 	Panel:SetSize( 300, 150 ) 
-	Panel:SetTitle( "Someone wrote:" ) 
+	Panel:SetTitle( noteType..":" ) 
 	Panel:SetVisible( true ) 
 	Panel:SetDraggable( true ) 
 	Panel:ShowCloseButton( true ) 
@@ -23,5 +23,5 @@ function ENT:Draw()
 end
 
 net.Receive("Retro_ShowReadNoteDialog", function()
-  ShowReadNoteDialog(net.ReadString())
+  ShowReadNoteDialog(net.ReadString(), net.ReadString()) -- (content, type)
 end)

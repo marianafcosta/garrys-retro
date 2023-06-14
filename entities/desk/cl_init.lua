@@ -10,14 +10,28 @@ function ShowWriteNoteDialog(spawnPos)
   Frame:MakePopup()
   Frame:Center()
 
+  local ComboBox = vgui.Create( "DComboBox", Frame )
+  ComboBox:SetPos( 10, 30 )
+  ComboBox:SetSize( 150, 20 )
+  ComboBox:AddChoice( "What went well" )
+  ComboBox:AddChoice( "What went wrong" )
+  ComboBox:AddChoice( "Ideas for improvement" )
+  ComboBox:SetValue( "What went well" )
+
+  local noteType = "What went well"
+
+  ComboBox.OnSelect = function( _, _, value )
+    noteType = value
+  end
+
   local NameEntry = vgui.Create( "DTextEntry", Frame )
-  NameEntry:SetPos( 25, 50 )
+  NameEntry:SetPos( 10, 70 )
   NameEntry:SetSize( 264, 32 )
   NameEntry:SetPlaceholderText( "Add note" )
   NameEntry.OnEnter = function( self )
-    print("Note written: "..self:GetValue())
     net.Start( "Retro_SaveNote" )
       net.WriteString( self:GetValue() )
+      net.WriteString( noteType )
       net.WriteVector( spawnPos )
     net.SendToServer( )
     self:SetText("")

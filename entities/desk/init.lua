@@ -33,10 +33,12 @@ end
 
 net.Receive("Retro_SaveNote", function( len, ply )
   local content = net.ReadString()
+  local noteType = net.ReadString()
   local spawnPos = net.ReadVector()
   local note = ents.Create("note") -- Classname of the entity; name of the file
   note:SetPos(spawnPos + Vector(0, 0, 25))
   note:SetContent(content)
+  note:SetNoteType(noteType)
   note:SetAuthor(ply)
   note:Spawn()
 end)

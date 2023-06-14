@@ -27,5 +27,6 @@ end
 function ENT:Use(activator)
   net.Start("Retro_ShowReadNoteDialog")
     net.WriteString(self:GetContent())
+    net.WriteString(self:GetNoteType())
   net.Send(activator)
 end

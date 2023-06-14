@@ -5,5 +5,6 @@ ENT.Spawnable = false
 
 function ENT:SetupDataTables()
   self:NetworkVar("String", 0, "Content")
-  self:NetworkVar("Entity", 1, "Author")
+  self:NetworkVar("String", 1, "NoteType")
+  self:NetworkVar("Entity", 2, "Author")
 end
