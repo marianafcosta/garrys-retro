@@ -10,7 +10,7 @@ util.AddNetworkString("Retro_SaveNote")
 
 function ENT:Initialize()
 
-  self:SetModel("models/props_interiors/Furniture_Desk01a.mdl")
+  self:SetModel(self.Model)
   self:PhysicsInit( SOLID_VPHYSICS )
 	self:SetMoveType(MOVETYPE_VPHYSICS)
 	self:SetSolid(SOLID_VPHYSICS)	
