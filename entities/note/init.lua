@@ -12,11 +12,11 @@ function ENT:Initialize()
   if (self:GetModel() == nil) then
     self:SetModel("models/props_lab/bindergreen.mdl")
   end
-  self:PhysicsInit( SOLID_VPHYSICS )
+  self:PhysicsInit(SOLID_VPHYSICS)
 	self:SetMoveType(MOVETYPE_VPHYSICS)
 	self:SetSolid(SOLID_VPHYSICS)	
   -- Call ENTITY:Use hook only once at every use
-  self:SetUseType( SIMPLE_USE )
+  self:SetUseType(SIMPLE_USE)
 
   local phys = self:GetPhysicsObject()
 

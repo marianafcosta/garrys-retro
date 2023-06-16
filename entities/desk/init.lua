@@ -11,11 +11,11 @@ util.AddNetworkString("Retro_SaveNote")
 function ENT:Initialize()
 
   self:SetModel(self.Model)
-  self:PhysicsInit( SOLID_VPHYSICS )
+  self:PhysicsInit(SOLID_VPHYSICS)
 	self:SetMoveType(MOVETYPE_VPHYSICS)
 	self:SetSolid(SOLID_VPHYSICS)	
   -- Call ENTITY:Use hook only once at every use
-  self:SetUseType( SIMPLE_USE )
+  self:SetUseType(SIMPLE_USE)
 
   local phys = self:GetPhysicsObject()
 
@@ -31,7 +31,7 @@ function ENT:Use(activator)
 	net.Send(activator)
 end
 
-net.Receive("Retro_SaveNote", function( len, ply )
+net.Receive("Retro_SaveNote", function(len, ply)
   local content = net.ReadString()
   local noteType = net.ReadString()
   local spawnPos = net.ReadVector()
