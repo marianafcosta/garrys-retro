@@ -2,9 +2,7 @@
 
 Just a little project that lets you hold sprint retrospectives in Garry's Mod. If, for some reason, you'd ever want to do that.
 
-# Demo
-
-![A video demonstrating the custom entities](https://vimeo.com/837219984?share=copy)
+[🎬 Demo](https://vimeo.com/837219984?share=copy)
 
 # Usage
 
