@@ -2,6 +2,10 @@
 
 Just a little project that lets you hold sprint retrospectives in Garry's Mod. If, for some reason, you'd ever want to do that.
 
+# Demo
+
+![A video demonstrating the custom entities](https://vimeo.com/837219984?share=copy)
+
 # Usage
 
 You can spawn the "Retrospective Desk" from spawn menu. Once spawned, if you interact with it, a promp to write a note will show up. Beside writing a note, you can also set the type of the note, i.e. whether it's something that went well, something that went wrong, or just an idea for improvement. Once you are finished writing the note and press Enter, a note will be spawned on top of the table. You can read that note if you interact with it.
